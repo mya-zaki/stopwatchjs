@@ -1,0 +1,29 @@
+{
+  "name": "stopwatchjs",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "dist/stopwatch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mya-zaki/stopwatchjs.git"
+  },
+  "keywords": [
+    "timer"
+  ],
+  "author": "mya-zaki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mya-zaki/stopwatchjs/issues"
+  },
+  "homepage": "https://github.com/mya-zaki/stopwatchjs#readme",
+  "devDependencies": {
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
