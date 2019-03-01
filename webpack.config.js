@@ -6,6 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "stopwatch.js",
-    library: "stopwatch"
+    library: "stopwatch",
+    libraryTarget: "umd"
   }
 };
