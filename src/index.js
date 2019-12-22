@@ -57,8 +57,13 @@ const stopWatch = (function() {
       this.min = 0;
       this.hour = 0;
 
+      // alarm
+      this.timeout = 0;
+      this.alarm = null;
+
       this.name = options.name || "default";
       this.tags = options.tags || [];
+      this.interval = options.interval || 10;
 
       this.render = function() {
         let render = options.render || function() {};
@@ -176,6 +181,16 @@ const stopWatch = (function() {
       this.hour = Math.floor(difftime / 1000 / 60 / 60) % 60;
 
       this.render.call(this);
+
+      if (
+        this.timeout > 0 &&
+        typeof this.alarm === "function" &&
+        difftime >= this.timeout
+      ) {
+        this.alarm.call();
+        this.stop();
+        this.reset();
+      }
     },
 
     start: function() {
@@ -183,7 +198,7 @@ const stopWatch = (function() {
         return;
       }
       this.status = STATUS_RUNNING;
-      this.timer = setInterval(this.run.bind(this), 10);
+      this.timer = setInterval(this.run.bind(this), this.interval);
       this.startTime = new Date().getTime() - this.getCurrent();
       this.store();
     },
@@ -209,6 +224,12 @@ const stopWatch = (function() {
 
       this.render.call(this);
       this.delete();
+    },
+
+    setTimer: function(timeout, callback) {
+      this.timeout = timeout;
+      this.alarm = callback;
+      this.start();
     },
 
     getHour: function() {

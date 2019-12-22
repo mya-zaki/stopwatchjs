@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>stopwatch</title>
+  </head>
+
+  <body>
+    <h1>stopwatch</h1>
+    <form name="form" id="form">
+      <p id="time">
+        00:00:00.00
+      </p>
+      <button type="button" id="btnStart">
+        Start
+      </button>
+      <button type="button" id="btnStop">
+        Stop
+      </button>
+      <button type="button" id="btnClear">
+        Clear
+      </button>
+      <button type="button" id="btnTimer">
+        setTimer(10sec.)
+      </button>
+    </form>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"
+      integrity="sha256-1fEPhSsRKlFKGfK3eO710tEweHh1fwokU5wFGDHO+vg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      requirejs.config({
+        paths: {
+          stopWatch: "/stopwatch"
+        }
+      });
+      requirejs(["stopWatch"], function(stopWatch) {
+        var sw = stopWatch.default({
+          render: function(hour, min, sec, sec100th) {
+            $("#time").html(hour + ":" + min + ":" + sec + "." + sec100th);
+          },
+          interval: 10
+        });
+
+        $(function() {
+          $("#btnStart").on("click", function() {
+            sw.start();
+          });
+          $("#btnStop").on("click", function() {
+            sw.stop();
+          });
+          $("#btnClear").on("click", function() {
+            sw.reset();
+          });
+          $("#btnTimer").on("click", function() {
+            sw.setTimer(10000, function() {
+              alert("alarm!");
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
