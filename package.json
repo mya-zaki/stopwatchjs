@@ -1,6 +1,6 @@
 {
   "name": "@mya-zaki/stopwatchjs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -25,9 +25,9 @@
   },
   "homepage": "https://github.com/mya-zaki/stopwatchjs#readme",
   "devDependencies": {
-    "jquery": "^3.4.1",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
-  }
+  },
+  "dependencies": {}
 }
